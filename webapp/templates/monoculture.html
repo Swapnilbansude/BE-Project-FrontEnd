@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'mft' %}">Modern Farming Methods</a></li>
+          <li>Monoculture System</li>
+        </ol>
+        <h2>Monoculture System</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+                <div class="card text-center">
+                <img class="card-img-top" src="{% static 'img/mono.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Monoculture System of Modern Farming Methods</h3>
+                        <p class="card-text">The monoculture farming method is the raising of a single crop within a speci ed area. Most of the
+commercial farms in the United States are now monoculture in nature, with crops like corn and soy
+taking top billing. This is in contrast to the traditional technique of farming, which relied on multiple
+crops being planted within a speci c area. Many indoor farms growing medicinal herbs and owers
+are measured to be monoculture farms.</p>
+                        <p class="card-text">
+                        Monoculture is the agricultural practice of producing a single crop, single plant, or livestock species,
+variety, or breed in a eld or farming system at a time. Polyculture, where more than one crop is
+grown in a similar space at the same time, is the alternative to monoculture. Monoculture farming is
+widely used in both industrial farming and organic farming and has allowed increased e ciency in
+planting and harvest.
+                        </p>
+                        <p class="card-text">
+                        When one crop is grown alone in a eld, it is called a monoculture farm. Monoculture farming makes it
+easier to cultivate, sow seed, control weeds, and harvest, as well as expand the size of the farm
+operation and improve aspects of pro tability and cost. At the same time, monocultures tend to
+promote the use of the other 5 basic practices of modern agriculture.
+                        </p>
+                        <p class="card-text">
+                        Monocultures in grassland are a moderately recent phenomenon. Many grassland systems, such as
+hay meadows and chalk grasslands, have a more diversi ed. In the case of chalk grasslands, this
+diversity has arisen following several years of grazing.
+                        </p>
+                        <h4>Some of the benefits of using Monoculture farming include:</h4>
+                        <p class="card-text">1. Reduced plant opposition for nutrients, space and solar radiation.</p>
+<p class="card-text">2. Control of undesirable or unpro table organisms.</p>
+<p class="card-text">3. Reduction of costs by controlling specialized machinery required for arable operations.</p>
+<p class="card-text">4. Maximize pro t from the increasing of higher gross margin crops.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>        
+  </main>
+
+{% endblock  %}

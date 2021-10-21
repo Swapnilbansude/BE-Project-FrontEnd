@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+    </div>
+  </header><!-- End Header -->
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Crop Prediction</li>
+            </ol>
+            <h2>Crop Prediction</h2>
+
+        </div>
+        </section><!-- End Breadcrumbs -->
+        <div class="container">
+          <div class="card" style="margin:20px;box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
+            <div class="card-title" id="pred-title">
+                <h3>Find Out The Most Suitable Crop To Grow In Your Farm</h3>
+            </div>
+            <div class="card-body">
+              <form method="POST" action="{% url 'predict' %}">
+              {% csrf_token %}
+                <div class="row">
+                  <div class="col">
+                    <label for="nitrogen">Nitrogen</label>
+                    <input type="text" name="nitrogen" class="form-control" placeholder="Enter Nitrogen Value">      
+                  </div>
+                  <div class="col">
+                    <label for="phosphorous">Phosphorous</label>
+                    <input type="text" name="phosphorous" class="form-control" placeholder="Enter Phosphorous Value">
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <label for="potassium">Potassium</label>
+                    <input type="text" name="potassium" class="form-control" placeholder="Enter Potassium Value">
+                  </div>
+                  <div class="col">
+                    <label for="phlevel">pH Level</label>
+                    <input type="text" name="phlevel" class="form-control" placeholder="Enter ph Level">
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <label for="temperature">Temperature</label>
+                    <input type="text" name="temperature" class="form-control" placeholder="Enter Temperature">
+                  </div>
+                  <div class="col">
+                    <label for="humidity">Humidity</label>
+                    <input type="text" name="humidity" class="form-control" placeholder="Enter Humidity">
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <label for="rainfall">Rainfall (in mm)</label>
+                    <input type="text" name="rainfall" class="form-control" placeholder="Enter Rainfall">
+                  </div>
+                  <div class="col">
+                  
+                  </div>
+                </div>
+                <br><br>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Predict</button>
+              </form>
+            </div>
+            {% if response %}
+                <div class="alert alert-success" style="align-items: center;">
+              <a class="close" href="#" data-dismiss="alert">×</a>
+          
+              <p>{{ response | safe }}</p>
+          
+          </div>
+            {% endif %}
+          </div>
+        </div>
+    </main>
+
+{% endblock %}
+

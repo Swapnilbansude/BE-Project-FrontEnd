@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'mft' %}">Modern Farming Methods</a></li>
+          <li>Hydroponics System</li>
+        </ol>
+        <h2>Hydroponics System</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+                <div class="card text-center">
+                <img class="card-img-top" src="{% static 'img/hydro.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Hydroponics System of Modern Farming Methods</h3>
+                        <p class="card-text">The hydroponics method is a soil-less type of farming because it requires no soil for the plants to
+grow. Instead, it uses water as its growing medium. The knowledge of soil-less gardening is called
+hydroponics. It essentially involves growing healthy plants without the use of a traditional soil medium
+by using a nutrient like a mineral-rich water solution instead. A plant needs, choose nutrients, some
+water, and sunlight to grow. Not only do plants grow without soil, they often develop a lot better with
+their roots in water instead.</p>
+                        <p class="card-text">
+                        The hydroponics farming method is a subset of hydroculture, which is a method of growing plants
+without soil by using mineral nutrient solutions in a water solvent. Terrestrial plants may be developed
+with only their roots exposed to the mineral solution, or the roots may be supported by an inert
+medium, such as perlite.
+                        </p>
+                        <p class="card-text">
+                        The nutrients used in hydroponic farming systems can come from an array of di erent sources; these
+can include but are not limited to, a byproduct from sh waste, duck manure, or purchased chemical
+fertilizers.
+                        </p>
+                        <h4>Some of the benefits of using Hydroponics farming include:</h4>
+                        <p class="card-text">1. By providing constant and readily available nutrition, hydroponics allows plants to rise up to 50%
+faster than they would in soil. Also, fresh produce can be harvested from a hydroponic garden
+throughout the year.</p>
+<p class="card-text">2. Great for both the environment and the mature product, hydroponic gardening virtually eliminates
+the need for herbicides and pesticides compared to traditional soil gardening.</p>
+<p class="card-text">3. Any water that is used in hydroponic farm gardening stays in the system and can be reused,
+reducing the constant need for a freshwater supply.</p>
+<p class="card-text">4. Arable land is often in small supply and gardening space continues to decrease. A huge option
+when you lack yard space or have a tiny balcony, hydroponics also lends itself really well to indoor
+gardening.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>        
+  </main>
+
+{% endblock  %}

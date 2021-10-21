@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Profile</li>
+        </ol>
+        <h2>My Profile</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="profile">
+      <div class="card" style="box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <img src="{% static 'img/farmer.jpeg' %}" class="rounded float-left" alt="Profile image">
+            </div>
+            {% for res in response %}
+            <div class="col">
+              <h3>Full Name</h3>
+              <h4>{{res.first_name}} {{res.last_name}}</h4>
+              <h3>Mobile No</h3>
+              <h4>{{res.phone}}</h4>
+              <h3>Category</h3>
+              <h4>{{res.category}}</h4>
+            </div>
+            <div class="col">
+              <h3>Email</h3>
+              <h4>{{res.email}}</h4>
+              <h3>Aadhar No</h3>
+              <h4>{{res.aadhar_no}}</h4>
+            </div>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock  %}

@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <style>
+    .hero-img {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static 'img/bg_two.jpg' %}");
+    height: 80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 80px;
+  }
+    .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  </style>
+
+  <!-- ======= Header ======= -->
+<header id="header" class="header fixed-top">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a href="home.html" class="logo d-flex align-items-center">
+      <img src="{% static 'img/favicon.png' %}" alt="logo">
+      <span>Aggregate Agro</span>
+    </a>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="{% url 'customer' %}">Home</a></li>
+        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'postads' %}">Post Advertisement</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'myads' %}">My Posts</a></li>
+        <li class="dropdown"><a href="#"><span>Notifications</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'crequest' %}">My Request</a></li>
+              <li><a href="{% url 'cresponse' %}">Responses</a></li>
+            </ul>
+        </li>
+        <li class="dropdown"><a href="#"><span>Welcome, User</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'cprofile' %}">View Profile</a></li>
+              <li><a href="{% url 'changepassword' %}">Change Password</a></li>
+              <li><a href="{% url 'logout' %}">Log Out</a></li>
+            </ul>
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+  </div>
+
+</header><!-- End Header -->
+
+<section id="hero-img" class="hero-img d-flex align-items-center">
+  <div class="hero-text">
+    <h1 style="font-size:50px">Welcome Customer To The Aggregate Agro</h1>
+    <p>Here you can purchase quality farm products directly from farmers</p>
+  </div>
+</section>
+<main id="main">
+  <!-- ======= About Section ======= -->
+<section id="about" class="about">
+
+  <div class="container" data-aos="fade-up">
+    <div class="row gx-0">
+
+      <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="content">
+          <h3>Who We Are</h3>
+          <h2>Aggregate Agro is to help customers to purchase farm products directly from farmers.</h2>
+          <p>
+            Aggregate Agro is a model farmer management website application.This site helps the customers to purchase agricultural produce online directly from the farmers.Hence, providing a wider market and helping them to not restrict themselves to the local market.It helps customers to improve their profitability.
+          </p>
+          <div class="text-center text-lg-start">
+            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+              <span>Read More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+        <img src="{% static 'img/about.png' %}" class="img-fluid" alt="">
+      </div>
+
+    </div>
+  </div>
+
+</section><!-- End About Section -->
+
+
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="services">
+
+    <div class="container" data-aos="fade-up">
+
+      <header class="section-header">
+        <h2>Services</h2>
+        <p>We provide different types of services to the customers</p>
+      </header>
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-box blue">
+            <i class="ri-discuss-line icon"></i>
+            <h3>Post Crop Advertisement</h3>
+            <p>Here customer can post their crop advertisement details.(like crop required,qantity,address etc)</p>
+            <a href="{% url 'postads' %}" class="read-more"><span>View</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-box orange">
+            <i class="ri-discuss-line icon"></i>
+            <h3>Post Complaint</h3>
+            <p>In this customers can post their complaint about crops , farmers and about the application.</p>
+            <a href="{% url 'postcomplaint' %}" class="read-more"><span>View</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-box green">
+            <i class="ri-discuss-line icon"></i>
+            <h3>Customers Market</h3>
+            <p>In this market customer can purchase quality farm products directly from farmers.</p>
+            <a href="{% url 'cmarket' %}" class="read-more"><span>View</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- End Services Section -->
+
+  <!-- ======= Contact Section ======= -->
+   <section id="contact" class="contact">
+
+     <div class="container" data-aos="fade-up">
+
+       <header class="section-header">
+         <h2>Contact</h2>
+         <p>Contact Us</p>
+       </header>
+
+       <div class="row gy-4">
+
+         <div class="col-lg-6">
+
+           <div class="row gy-4">
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-geo-alt"></i>
+                 <h3>Address</h3>
+                 <p>A108 Adam Street,<br>New York, NY 535022</p>
+               </div>
+             </div>
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-telephone"></i>
+                 <h3>Call Us</h3>
+                 <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+               </div>
+             </div>
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-envelope"></i>
+                 <h3>Email Us</h3>
+                 <p>info@example.com<br>contact@example.com</p>
+               </div>
+             </div>
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-clock"></i>
+                 <h3>Open Hours</h3>
+                 <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+               </div>
+             </div>
+           </div>
+
+         </div>
+
+         <div class="col-lg-6">
+           <form action="forms/contact.php" method="post" class="php-email-form">
+             <div class="row gy-4">
+
+               <div class="col-md-6">
+                 <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+               </div>
+
+               <div class="col-md-6 ">
+                 <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+               </div>
+
+               <div class="col-md-12">
+                 <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+               </div>
+
+               <div class="col-md-12">
+                 <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+               </div>
+
+               <div class="col-md-12 text-center">
+                 <div class="loading">Loading</div>
+                 <div class="error-message"></div>
+                 <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                 <button type="submit">Send Message</button>
+               </div>
+             </div>
+           </form>
+         </div>
+       </div>
+     </div>
+   </section><!-- End Contact Section -->
+
+ </main><!-- End #main -->
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer" class="footer">
+
+   <div class="footer-top">
+     <div class="container">
+       <div class="row gy-4">
+         <div class="col-lg-5 col-md-12 footer-info">
+           <a href="index.html" class="logo d-flex align-items-center">
+             <img src="{% static 'img/favicon.png' %}" alt="">
+             <span>Aggregate Agro</span>
+           </a>
+           <p>We offer modern solutions to Farmers for growing their business.This is a "ONE STOP SHOP FOR FARMERS"</p>
+           <div class="social-links mt-3">
+             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+             <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
+             <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+           </div>
+         </div>
+
+         <div class="col-lg-2 col-6 footer-links">
+           <h4>Useful Links</h4>
+           <ul>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+           </ul>
+         </div>
+
+         <div class="col-lg-2 col-6 footer-links">
+           <h4>Our Services</h4>
+           <ul>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Agriculture Information</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Government Schemes</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Farmers Market</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Crop Prediction</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Modern Farming Techniques</a></li>
+           </ul>
+         </div>
+
+         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+           <h4>Contact Us</h4>
+           <p>
+             A108 MG Road <br>
+             Maharashtra,Pune-411046<br>
+             India <br><br>
+             <strong>Phone:</strong> +1 5589 55488 55<br>
+             <strong>Email:</strong> info@example.com<br>
+           </p>
+
+         </div>
+
+       </div>
+     </div>
+   </div>
+
+   <div class="container">
+     <div class="copyright">
+       &copy; Copyright <strong><span>Aggregate Agro</span></strong>. All Rights Reserved
+     </div>
+     <div class="credits">
+       <!-- All the links in the footer should remain intact. -->
+       <!-- You can delete the links only if you purchased the pro version. -->
+       <!-- Licensing information: https://bootstrapmade.com/license/ -->
+       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+       Designed by <a href="#">Team</a>
+     </div>
+   </div>
+ </footer><!-- End Footer -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  {% for m in messages %}
+  {% if m.tags == 'success' %}
+    <script>
+      swal("Welcome User!", "{{ m }}", "success");
+    </script>
+  {% endif %}
+  {% endfor %}
+
+{% endblock  %}
+

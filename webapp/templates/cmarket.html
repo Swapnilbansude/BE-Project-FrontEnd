@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .blog .card {
+    width: 300px;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+  }
+  .blog .card-img-top {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 200px;
+    background-size: cover;
+    margin-left: 30px;
+  }
+</style>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="{% url 'customer' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'postads' %}">Post Advertisement</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'myads' %}">My Posts</a></li>
+          <li class="dropdown"><a href="#"><span>Notifications</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'crequest' %}">My Request</a></li>
+              <li><a href="{% url 'cresponse' %}">Responses</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><i class="bi bi-farmer"></i><span>Welcome, User</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="{% url 'cprofile' %}">View Profile</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+              </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'customer' %}">Home</a></li>
+          <li>Customers Market</li>
+        </ol>
+        <h2>Customers Market</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+    <h2 style="text-align:center;color:green;"> Available Farmers </h2>
+    <div class="line" style="height:2px;background:darkolivegreen;width:240px;margin-left:520px;margin-bottom:30px;"></div>
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+        {% for i in response %}
+          <div class="col-lg-4 col-sm-6 mb-4" style="margin-top:10px;">
+            <div class="card">
+              <img class="card-img-top" src="{% static 'img/farmer2.jpg' %}" alt="Farmer">
+              <div class="card-body">
+                <h4 class="card-title">{{i.farmer_name}}</h4>
+                <p class="card-text">
+                <h5 class="card-subtitle mb-2">Phone no :{{i.phone}}</h5>
+                <h5 class="card-subtitle mb-2">Address :{{i.address}}</h5>
+                <h5 class="card-subtitle mb-2">Crop :{{i.crop_name}}</h5>
+                <h5 class="card-subtitle mb-2">Quantity(in Kg) :{{i.quantity}}</h5>
+                </p>
+                <div class="buy d-flex justify-content-between align-items-center">
+                  <div class="price text-success"><h5 class="mt-4">Rs {{i.price}}</h5></div>
+                  <a href="{% url 'sendcrequest' id=i.id %}" class="btn btn-danger mt-3" onclick="return confirm('Are you sure want to send request to farmer ?')"> Send Request</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+            {% endif %}
+
+        {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% for m in messages %}
+    {% if m.tags == 'error' %}
+    <script>
+      swal("Some Error occured", "{{ m }}", "error");
+    </script>
+    {% endif %}
+    {% if m.tags == 'success' %}
+      <script>
+      swal("Success", "{{ m }}", "success");
+    </script>
+    {% endif %}
+  {% endfor %}
+  
+{% endblock  %}

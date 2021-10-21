@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'mft' %}">Modern Farming Methods</a></li>
+          <li>Aeroponics System</li>
+        </ol>
+        <h2>Aeroponics System</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+                <div class="card text-center">
+                <img class="card-img-top" src="{% static 'img/aero.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Aeroponics System of Modern Farming Methods</h3>
+                        <p class="card-text">Aeroponics is the process of growing plants in an air or mist environment without the utilize of soil or
+an aggregate medium. The word “Aeroponic” is from the Greek meanings of aer and ponos.
+Aeroponics is a subset of hydroponics and works by suspending plant roots in the air and misting
+them with nutrient water. This method can provide a better level of control over the amount of water
+that is used throughout the growing process but may leave plant roots vulnerable to pathogens, if not
+carefully controlled.</p>
+                        <p class="card-text">
+                        Aeroponics system culture di ers from conventional Hydroponics, Aquaponics, and in-vitro growing.
+Unlike hydroponics, which uses a liquid nutrient result as a growing medium and essential mineral to
+maintain plant growth; or aquaponics which uses water and sh waste, Aeroponic is conducted
+without a growing medium. It is considered a type of hydroponics since water is used in Aeroponics to
+transmit nutrients.
+                        </p>
+                        <p class="card-text">
+                        Aeroponic systems are additional cost-e cient than other systems. Because of the reduced volume of
+solution throughput, less water, and fewer nutrients are needed in the system at any given time
+compared to other nutrient delivery systems. The need for substrates is eliminated, as is the need for
+many moving parts.
+                        </p>
+                        <h4>Some of the benefits of using Aeroponic farming include:</h4>
+                        <p class="card-text">
+                        1. Ease of working with plants</p>
+<p class="card-text">2. Cost-e ective since won’t have to spend money on irrigation channels</p>
+<p class="card-text">3. Aids in disease-free cultivation as plant-to-plant contact is limited and if a plant does become
+infected, it can be simply removed from the support structure without disrupting the other plants.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>        
+  </main>
+
+{% endblock  %}

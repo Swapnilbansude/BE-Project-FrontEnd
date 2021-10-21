@@ -1,0 +1,572 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aggregate Agro - The Farming Hub</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- CSS CDN Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <style>
+    .modal {
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+    <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="logo">
+        <span>Aggregate Agro</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="#login" data-dismiss="modal" data-toggle="modal" data-target="#LoginModel">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+
+  </header><!-- End Header -->
+
+<!-- ================= Login Modal ========== -->
+  <div class="modal fade" id="LoginModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" id="exampleModalLongTitle">
+            <h3 id="loginh">Aggregate Agro</h3>
+            <h2 id="loginn">Login</h2>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputEmail1">Phone No</label>
+              <input type="phone" class="form-control" id="exampleInputEmail1" name="phone" aria-describedby="emailHelp" placeholder="Enter phone no" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="pass" placeholder="Enter Password" required>
+            </div>
+            <label for="categories">Categories</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required>
+              <option selected>Select Category</option>
+              <option value="1">Farmer</option>
+              <option value="2">Customer</option>
+            </select>
+            <br><br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+          </form>
+          <br>
+          {% for message in messages %}
+
+          <div class="alert alert-danger">
+              <a class="close" href="#" data-dismiss="alert">×</a>
+          
+              {{ message }}
+          
+          </div>
+          {% endfor %}
+          
+          <br>
+        </div>
+        <div class="modal-footer">
+          <p>Not register yet?</p> <a href="#a" class="text-info" data-dismiss="modal" data-toggle="modal" data-target="#SignUpModel"> Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- ================= Sign Up Modal ========== -->
+  <div class="modal fade" id="SignUpModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" id="exampleModalLongTitle">
+            <h3 id="loginh">Aggregate Agro</h3>
+            <h2 id="loginn2">Create Account</h2>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+            <div class="row">
+              <div class="col">
+                <label for="firstname">First Name</label>
+                <input type="text" name="first_name" class="form-control" placeholder="Enter First name" required>
+              </div>
+              <div class="col">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="last_name" class="form-control" placeholder="Enter Last name" required>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <label for="mobileno">Mobile No</label>
+                <input type="phone" name="phone" class="form-control" placeholder="Enter mobile no" required>
+              </div>
+              <div class="col">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter email" required>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <label for="address">Address</label>
+                <input type="text" name="address" class="form-control" placeholder="Enter address" required>
+              </div>
+              <div class="col">
+                <label for="aadhar">Aadhar No</label>
+                <input type="text" name="aadharno" class="form-control" placeholder="Enter Aadhar no" required>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <label for="password">Password</label>
+                <input type="password" name="password1" class="form-control" placeholder="Enter password" required>
+              </div>
+              <div class="col">
+                <label for="rpassword">Retype Password</label>
+                <input type="password" name="password2" class="form-control" placeholder="Retype Password" required>
+              </div>
+            </div>
+            <br>
+            <label for="categories">Category</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2" name="category" required>
+              <option selected>Select Category</option>
+              <option>Farmer</option>
+              <option>Customer</option>
+            </select>
+            <br><br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Create Account</button>
+          </form>
+          <br>
+          {% for message in messages %}
+          {% if message.tags == "success" %}
+          <div class="alert alert-success">
+              <a class="close" href="#" data-dismiss="alert">×</a>
+              {{ message }}
+              {% else %}
+              <div class="alert alert-danger">
+                  <a class="close" href="#" data-dismiss="alert">×</a>
+                  {{ message }}
+                  {% endif %}
+                  </div>
+        {% endfor %}
+          <br>
+        </div>
+        <div class="modal-footer">
+          <p>If you have already register </p> <a href="#a" class="text-info" data-dismiss="modal" data-toggle="modal" data-target="#LoginModel">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">We offer modern solutions to Farmers for growing their business</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">This is a "ONE STOP SHOP FOR FARMERS"</h2>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Get Started</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{% static 'img/bg_side.jpg' %}" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+
+<main id="main">
+
+  <!-- ======= About Section ======= -->
+<section id="about" class="about">
+
+  <div class="container" data-aos="fade-up">
+    <div class="row gx-0">
+
+      <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="content">
+          <h3>Who We Are</h3>
+          <h2>Aggregate Agro is to help farmers by providing all kinds of agriculture related information in this website</h2>
+          <p>
+            Aggregate Agro is a model farmer management website application.This site helps the farmers to sell their agricultural produce online and suggests best-in-practice farming processes.Hence, providing a wider market and helping them to not restrict themselves to the local market.It helps farmers to improve their productivity and profitability.
+          </p>
+          <div class="text-center text-lg-start">
+            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+              <span>Read More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+        <img src="{% static 'img/about.png' %}" class="img-fluid" alt="">
+      </div>
+
+    </div>
+  </div>
+
+</section><!-- End About Section -->
+
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h2>Services</h2>
+      <p>We provide different types of services to the farmers</p>
+    </header>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-box blue">
+          <i class="ri-discuss-line icon"></i>
+          <h3>Crop Prediction</h3>
+          <p>This prediction module will recommend best suited crop to the farmer according to their environment condition.</p>
+          <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-box orange">
+          <i class="ri-discuss-line icon"></i>
+          <h3>Fertilizer Recommendation</h3>
+          <p>This module will recommend fertilizers to the farmers according to the soil condition.</p>
+          <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-box green">
+          <i class="ri-discuss-line icon"></i>
+          <h3>Disease Prediction</h3>
+          <p>This module will help farmers to predict the disease and will also give a little background about the disease and suggestions to cure it.</p>
+          <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-box red">
+          <i class="ri-discuss-line icon"></i>
+          <h3>Modern Farming Techniques</h3>
+          <p>The modern farming method is a system in which farmers utilizes technologically new and advanced methods of farming.</p>
+          <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+        <div class="service-box purple">
+          <i class="ri-discuss-line icon"></i>
+          <h3>Weather Information</h3>
+          <p>This will help farmers to get the weather related information which is required for their farming.</p>
+          <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+        <div class="service-box pink">
+          <i class="ri-discuss-line icon"></i>
+          <h3>Farmers Market</h3>
+          <p>This is a Farmers Market,to sale their farm product to the customers and customer can purchase farm products directly from farmers.</p>
+          <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- End Services Section -->
+<!-- ======= Recent Blog Posts Section ======= -->
+    <section id="recent-blog-posts" class="recent-blog-posts">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Blog</h2>
+          <p>Recent posts from our Blog</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="{% static 'img/blog1.png' %}" class="img-fluid" alt=""></div>
+              <span class="post-date">Tue, September 15</span>
+              <h3 class="post-title">How to increase productivity and profitability using modern farming methods.</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="{% static 'img/bg_two.jpg' %}" class="img-fluid" alt=""></div>
+              <span class="post-date">Fri, August 28</span>
+              <h3 class="post-title">Pros and cons of modern farming technology:Top advantages and disadvantages</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="{% static 'img/blog2.jpg' %}" class="img-fluid" alt=""></div>
+              <span class="post-date">Mon, July 11</span>
+              <h3 class="post-title">How to produce quality products in the farm</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Recent Blog Posts Section -->
+
+
+  <!-- ======= Contact Section ======= -->
+   <section id="contact" class="contact">
+
+     <div class="container" data-aos="fade-up">
+
+       <header class="section-header">
+         <h2>Contact</h2>
+         <p>Contact Us</p>
+       </header>
+
+       <div class="row gy-4">
+
+         <div class="col-lg-6">
+
+           <div class="row gy-4">
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-geo-alt"></i>
+                 <h3>Address</h3>
+                 <p>A108 Adam Street,<br>New York, NY 535022</p>
+               </div>
+             </div>
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-telephone"></i>
+                 <h3>Call Us</h3>
+                 <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+               </div>
+             </div>
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-envelope"></i>
+                 <h3>Email Us</h3>
+                 <p>info@example.com<br>contact@example.com</p>
+               </div>
+             </div>
+             <div class="col-md-6">
+               <div class="info-box">
+                 <i class="bi bi-clock"></i>
+                 <h3>Open Hours</h3>
+                 <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+               </div>
+             </div>
+           </div>
+
+         </div>
+
+         <div class="col-lg-6">
+           <form action="forms/contact.php" method="post" class="php-email-form">
+             <div class="row gy-4">
+
+               <div class="col-md-6">
+                 <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+               </div>
+
+               <div class="col-md-6 ">
+                 <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+               </div>
+
+               <div class="col-md-12">
+                 <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+               </div>
+
+               <div class="col-md-12">
+                 <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+               </div>
+
+               <div class="col-md-12 text-center">
+                 <div class="loading">Loading</div>
+                 <div class="error-message"></div>
+                 <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                 <button type="submit">Send Message</button>
+               </div>
+             </div>
+           </form>
+         </div>
+       </div>
+     </div>
+   </section><!-- End Contact Section -->
+
+ </main><!-- End #main -->
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer" class="footer">
+
+   <div class="footer-top">
+     <div class="container">
+       <div class="row gy-4">
+         <div class="col-lg-5 col-md-12 footer-info">
+           <a href="index.html" class="logo d-flex align-items-center">
+             <img src="{% static 'img/favicon.png' %}" alt="">
+             <span>Aggregate Agro</span>
+           </a>
+           <p>We offer modern solutions to Farmers for growing their business.This is a "ONE STOP SHOP FOR FARMERS"</p>
+           <div class="social-links mt-3">
+             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+             <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
+             <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+           </div>
+         </div>
+
+         <div class="col-lg-2 col-6 footer-links">
+           <h4>Useful Links</h4>
+           <ul>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+           </ul>
+         </div>
+
+         <div class="col-lg-2 col-6 footer-links">
+           <h4>Our Services</h4>
+           <ul>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Fertilizer Recommendation</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Disease Prediction</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Farmers Market</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Crop Prediction</a></li>
+             <li><i class="bi bi-chevron-right"></i> <a href="#">Modern Farming Techniques</a></li>
+           </ul>
+         </div>
+
+         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+           <h4>Contact Us</h4>
+           <p>
+             A108 MG Road <br>
+             Maharashtra,Pune-411046<br>
+             India <br><br>
+             <strong>Phone:</strong> +1 5589 55488 55<br>
+             <strong>Email:</strong> info@example.com<br>
+           </p>
+
+         </div>
+
+       </div>
+     </div>
+   </div>
+
+   <div class="container">
+     <div class="copyright">
+       &copy; Copyright <strong><span>Aggregate Agro</span></strong>. All Rights Reserved
+     </div>
+     <div class="credits">
+       <!-- All the links in the footer should remain intact. -->
+       <!-- You can delete the links only if you purchased the pro version. -->
+       <!-- Licensing information: https://bootstrapmade.com/license/ -->
+       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+       Designed by <a href="#">Team</a>
+     </div>
+   </div>
+ </footer><!-- End Footer -->
+
+ <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+ <!-- Vendor JS Files -->
+ <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+ <script src="{% static 'vendor/aos/aos.js' %}"></script>
+ <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+ <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+ <script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+ <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+ <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+ <!-- Template Main JS File -->
+ <script src="{% static 'js/main.js' %}"></script>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  {% for m in messages %}
+    {% if m.tags == 'error' %}
+    <script>
+      swal("Some Error occured", "{{ m }}", "error");
+    </script>
+    {% endif %}
+    {% if m.tags == 'success' %}
+      <script>
+      swal("Success", "{{ m }}", "success");
+    </script>
+    {% endif %}
+  {% endfor %}
+</body>
+</html>

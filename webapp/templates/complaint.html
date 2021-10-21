@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+    </div>
+  </header><!-- End Header -->
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+            <li><a href="{% url 'customer' %}">Home</a></li>
+            <li>Post Complaints</li>
+            </ol>
+            <h2>Post Complaints</h2>
+
+        </div>
+        </section><!-- End Breadcrumbs -->
+        <div class="container">
+          <div class="card" style="margin:20px;">
+            <div class="card-title" id="pred-title" style="margin-left:240px;">
+                <h3>Post your Complaints Here</h3>
+            </div>
+            <div class="card-body">
+              <form method="POST" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <label for="name">Please Enter Your Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                </div>
+                <br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <label for="phone">Please Enter Your Phone no</label>
+                    <input type="text" name="phone" class="form-control" placeholder="Enter your phone no" required>
+                  </div>
+                </div>
+                <br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <label for="complaint">Please Select Complaint</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2" name="complaint">
+                        <option selected>Select Complaint Type</option>
+                        <option>About Farmer</option>
+                        <option>About Customer</option>
+                        <option>About Farm Products</option>
+                        <option>About System Issue</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <label for="desc">Complaint Description</label>
+                    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Your Complaint Details" required></textarea>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Post Your Complaint</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </main>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  {% for m in messages %}
+    {% if m.tags == 'error' %}
+    <script>
+      swal("Some Error occured", "{{ m }}", "error");
+    </script>
+    {% endif %}
+    {% if m.tags == 'success' %}
+      <script>
+      swal("Success", "{{ m }}", "success");
+    </script>
+    {% endif %}
+  {% endfor %}
+  
+{% endblock %}
+

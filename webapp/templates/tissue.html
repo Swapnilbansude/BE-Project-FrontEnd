@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'mft' %}">Modern Farming Methods</a></li>
+          <li>Tissue Culture System</li>
+        </ol>
+        <h2>Tissue Culture System</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+                <div class="card text-center">
+                <img class="card-img-top" src="{% static 'img/tissue.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Tissue Culture System of Modern Farming Methods</h3>
+                        <p class="card-text">Tissue culture refers to a method in which fragments of a tissue plant are introduced into a new,
+arti cial environment, where they continue to function or grow. While fragments of a tissue culture are
+often used, it is important to note that entire organs are also used for tissue culture purposes. Here,
+such growth media as broth and agar are used to facilitate the procedure. While the term tissue
+culture farm may be used for both plant and animal tissues, plant tissue culture is the more speci c
+term used for the culture of plant tissues in tissue culture.</p>
+                        <p class="card-text">
+                        Tissue culture is the expansion of tissues or cells separate from the organism. This is naturally
+facilitated via the use of a liquid, semi-solid, or solid growth medium, such as broth or agar. Tissue
+culture normally refers to the culture of animal cells and tissues, with the more speci c term plant
+tissue culture being used for plants.
+                        </p>
+                        <p class="card-text">
+                        Tissue culture usually refers to the growth of cells from a tissue from a multicellular organism in vitro.
+These cells may be isolated from a donor organism, “primary cells”, or an immortalized cell line. The
+cells are bathed in a culture medium, which contains necessary nutrients and energy sources
+necessary for the cells’ survival. The tissue culture is often used interchangeably with cell culture.
+                        </p>
+                        <p class="card-text">
+                        Use of Tissue Culture technique:
+                        The tissue culture technique is used increasingly for the production of ornamental plants like orchids,
+dahlia, carnation, chrysanthemum, etc. The assembly of plants by the method of tissue culture is also
+known as micro propagation because small amounts of plant material is used.
+                        </p>
+                        <h4>Some of the benefits of using Tissue Culture farming include:</h4>
+                        <p class="card-text">1. Tissue culture is a fast technique. Thousands of plantlets can be created in a few weeks time from a
+small amount of plant tissue.</p>
+<p class="card-text">2. The new plants formed by tissue culture are disease-free.</p>
+<p class="card-text">3. Tissue culture can produce, plants round the year, irrespective of weather or season.</p>
+<p class="card-text">4. Very little space is needed for increasing new plants by tissue culture.</p>
+<p class="card-text">5. It helps to speed up the creation of new varieties into the market place.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>        
+  </main>
+
+{% endblock  %}

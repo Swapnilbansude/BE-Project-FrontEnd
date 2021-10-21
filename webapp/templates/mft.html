@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Modern Farming Techniques</li>
+        </ol>
+        <h2>Modern Farming Techniques</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'img/aero.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title">Aeroponics System of Modern Farming Methods</h3>
+                            <p class="card-text">Aeroponics is the process of growing plants in an air or mist environment without the utilize of soil or
+an aggregate medium. The word “Aeroponic” is from the Greek meanings of aer and ponos.
+Aeroponics is a subset of hydroponics and works by suspending plant roots in the air and misting
+them with nutrient water. This method can provide a better level of control over the amount of water
+that is used throughout the growing process but may leave plant roots vulnerable to pathogens, if not
+carefully controlled.
+                            </p>
+                            <a href="{% url 'aero' %}" class="btn btn-success">Read More</a>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top:20px;">
+                        <img class="card-img-top" src="{% static 'img/aqua.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title">Aquaponics of Modern Farming Methods</h3>
+                            <p class="card-text">
+                            Aquaponics, on the other hand, is a closed-loop system that relies on the symbiotic relationship
+among aquaculture ( sh) and agriculture (plants) for fertilization. While sh waste accumulates in the
+water and provides the nutrients essential for plant growth, the plants naturally clean the water. It
+provides a balanced, yet less regimented, environment.
+                            </p>
+                            <a href="{% url 'aqua' %}" class="btn btn-success">Read More</a>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top:20px;">
+                        <img class="card-img-top" src="{% static 'img/hydro.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title">Hydroponics of Modern Farming Methods</h3>
+                            <p class="card-text">
+                            The hydroponics method is a soil-less type of farming because it requires no soil for the plants to
+grow. Instead, it uses water as its growing medium. The knowledge of soil-less gardening is called
+hydroponics. It essentially involves growing healthy plants without the use of a traditional soil medium
+by using a nutrient like a mineral-rich water solution instead. A plant needs, choose nutrients, some
+water, and sunlight to grow. Not only do plants grow without soil, they often develop a lot better with
+their roots in water instead.
+                            </p>
+                            <a href="{% url 'hydro' %}" class="btn btn-success">Read More</a>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top:20px;">
+                        <img class="card-img-top" src="{% static 'img/mono.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title">Monoculture of Modern Farming Methods</h3>
+                            <p class="card-text">
+                            The monoculture farming method is the raising of a single crop within a speci ed area. Most of the
+commercial farms in the United States are now monoculture in nature, with crops like corn and soy
+taking top billing. This is in contrast to the traditional technique of farming, which relied on multiple
+crops being planted within a speci c area. Many indoor farms growing medicinal herbs and owers
+are measured to be monoculture farms.
+                            </p>
+                            <a href="{% url 'mono' %}" class="btn btn-success">Read More</a>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top:20px;">
+                        <img class="card-img-top" src="{% static 'img/tissue.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title">Tissue culture of Modern Farming Methods</h3>
+                            <p class="card-text">
+                            Tissue culture refers to a method in which fragments of a tissue plant are introduced into a new,
+arti cial environment, where they continue to function or grow. While fragments of a tissue culture are
+often used, it is important to note that entire organs are also used for tissue culture purposes. Here,
+such growth media as broth and agar are used to facilitate the procedure. While the term tissue
+culture farm may be used for both plant and animal tissues, plant tissue culture is the more speci c
+term used for the culture of plant tissues in tissue culture.
+                            </p>
+                            <a href="{% url 'tissue' %}" class="btn btn-success">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>      
+
+
+  </main>
+
+{% endblock  %}

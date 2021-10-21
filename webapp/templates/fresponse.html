@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'fmarket' %}">Farmers Market</a></li>
+          <li>Responses</li>
+        </ol>
+        <h2>Responses</h2>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="container" style="padding: 34px 0px 19px 0px;">
+      <div class="card" style="box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);">
+        <div class="card-body">
+        <h3 class="card-title">My Responses Details</h3>
+        <table class="table table-hover table-fixed">
+        <thead class="thead">
+            <tr>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Customer Phone</th>
+            <th scope="col">Customer Address</th>
+            <th scope="col">Crop Name</th>
+            <th scope="col">Quantity (in Kg)</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in response %}
+            <tr>
+            <th scope="row">{{i.cname}}</th>
+            <td>{{i.cphone}}</td>
+            <td>{{i.cadd}}</td>
+            <td>{{i.crop}}</td>
+            <td>{{i.quantity}}</td>
+            <td>
+              <button type="button" class="btn btn-success"><i class="bi bi-check2-square"><a href="{% url 'fresponseaccept' id=i.id %}" onclick="return confirm('Are you sure want to accept ?')"> Accept</a></i></button>
+              <button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"><a href="{% url 'fresponsereject' id=i.id%}" onclick="return confirm('Are you sure want to reject ?')"> Reject</a></i></button>
+            </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+ </main>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  {% for m in messages %}
+    {% if m.tags == 'error' %}
+    <script>
+      swal("Some Error occured", "{{ m }}", "error");
+    </script>
+    {% endif %}
+    {% if m.tags == 'success' %}
+      <script>
+      swal("Success", "{{ m }}", "success");
+    </script>
+    {% endif %}
+  {% endfor %}
+  
+{% endblock  %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'mft' %}">Modern Farming Methods</a></li>
+          <li>Aquaponics System</li>
+        </ol>
+        <h2>Aquaponics System</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+                <div class="card text-center">
+                <img class="card-img-top" src="{% static 'img/aqua.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">Aquaponics System of Modern Farming Methods</h3>
+                        <p class="card-text">Aquaponics, on the other hand, is a closed-loop system that relies on the symbiotic relationship
+among aquaculture ( sh) and agriculture (plants) for fertilization. While sh waste accumulates in the
+water and provides the nutrients essential for plant growth, the plants naturally clean the water. It
+provides a balanced, yet less regimented, environment.</p>
+                        <p class="card-text">
+                        Aquaponics refers to any method that combines conventional aquaculture (raising aquatic animals
+such as snails, sh, or prawns in tanks) with hydroponics (cultivating plants in water) in a symbiotic
+environment. In normal aquaculture, excretions from the animals raised can accumulate in the water,
+increasing toxicity.
+                        </p>
+                        <p class="card-text">
+                        An Aquaponic system depends on di erent live components to work e ectively. The 3 main live
+components are plants, sh (or other aquatic creatures), and bacteria.
+                        </p>
+                        <h4>Some of the benefits of using Aquaponic farming include:</h4>
+                        <p class="card-text">1. All normal fertilizer sources from sh waste.</p>
+<p class="card-text">2. No reliance on mined and affected fertilizers.</p>
+<p class="card-text">3. Efficient, sustainable, and extremely productive.</p>
+<p class="card-text">4. Fish are free of expansion hormones and antibiotics.</p>
+<p class="card-text">5. Allows continuous making of food.</p>
+<p class="card-text">6. It produces both a protein and vegetable crop.</p>
+<p class="card-text">7. The integrated method is sustainable and earth-friendly.</p>
+<p class="card-text">8. Eliminating soil eliminates soil-borne diseases.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>        
+  </main>
+
+{% endblock  %}

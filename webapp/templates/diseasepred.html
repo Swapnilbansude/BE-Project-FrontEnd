@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'img/favicon.png' %}" alt="">
+        <span>Aggregate Agro</span>
+      </a>
+    </div>
+  </header><!-- End Header -->
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Disease Prediction</li>
+            </ol>
+            <h2>Disease Prediction</h2>
+
+        </div>
+        </section><!-- End Breadcrumbs -->
+        <div class="container">
+          <div class="card" style="margin:20px;box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
+            <div class="card-title" id="pred-title">
+                <h3>Find out which disease has been caught by your plant</h3>
+            </div>
+            <div class="card-body">
+              <form method="POST" action="{% url 'dpred' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <label for="image">Please Upload an image</label>
+                    <input type="file" name="file" class="form-control" onchange="preview_image(event)" style="font-weight: bold;">
+                  </div>
+                </div>
+                <br><br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <img id="output-image" class="img-thumbnail" />
+                  </div>
+                </div>
+                <br><br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Predict</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {% if response %}
+                <div class="alert alert-success">
+                  <a class="close" href="#" data-dismiss="alert">×</a>
+              
+                  <p>{{ response | safe }}</p>
+          
+                </div>
+            {% endif %}
+          </div>
+        </div>
+    </main>
+    <script type="text/javascript">
+      function preview_image(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+          var output = document.getElementById('output-image')
+          output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    </script>
+
+{% endblock %}
+
